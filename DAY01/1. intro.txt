@@ -202,3 +202,46 @@ MS SQL SERVER
 POSTGRE SQL 
 
 DB is optional, Because of H2 is inbuild DB for SonarQube.
+
+
+
+
+
+Realtime bug [Most of the people are facing same issues]
+------------
+
+If you are by mistake started sonarqube server with root user, Then it will not start the sonarqube server.
+
+sudo su -
+cd /opt/sonarqube/bin/linux-x86-64
+
+sh sonar.sh start ---> It is showing started , But actually it is not started.
+sh sonar.sh status
+
+--> try now with sonar user
+
+su - sonar
+
+cd /opt/sonarqube/bin/linux-x86-64
+
+sh sonar.sh start ---> It is showing started , But actually it is not started.
+sh sonar.sh status
+
+NOTE: when you are getting this error , Then check the logs once.
+
+cd /opt/sonarqube/logs
+
+cat sonar.log  ---> temp directory created
+
+
+delete that dir:   sudo rm -rf /opt/sonarqube/temp/
+
+sh sonar.sh start 
+sh sonar.sh status
+Then start the sonarqube server from sonar user and check the status.
+http://13.233.55.221:9000/
+
+
+
+
+
